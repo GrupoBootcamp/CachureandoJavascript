@@ -447,7 +447,6 @@ footer .footer_dateTime {
 
 * {
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
   color: #756E97;
 }
 
@@ -518,6 +517,33 @@ textarea {
 .form__field:focus {
   border: 2px solid rgba(30, 85, 250, 0.47);
   background-color: #fff;
+}
+
+.plus {
+  background: #756E97;
+  color: white;
+  box-shadow: none;
+  border: none;
+  border-radius: 20px;
+}
+.plus:hover {
+  box-shadow: 1px #946FA3;
+}
+
+.minus {
+  background: #756E97;
+  color: white;
+  box-shadow: none;
+  border: none;
+  border-radius: 20px;
+}
+.minus:hover {
+  box-shadow: 1px #946FA3;
+}
+
+.cantidad {
+  width: 2rem;
+  border: 4px solid white;
 }
 
 body {
