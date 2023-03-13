@@ -18,7 +18,7 @@ let productos = [
     img:'/img/productos/10.webp',
     codigo: '123457',
     Nombre:'Cuadritos',
-    descripcion:'Cuadritos Decortativos',
+    descripcion:'Cuadritos decortativos',
     precio: '10.000',
     cantidad: '0',
 },
@@ -26,12 +26,83 @@ let productos = [
     img:'/img/productos/11x.webp',
     codigo: '123458',
     Nombre:'Figurita de conejo',
-    descripcion:'igura decorativa para habitacion de conejo',
+    descripcion:'Figura decorativa para habitación de conejo',
     precio: '10.000',
     cantidad: '0',
-}
+},
+{
+    img:'/img/productos/12.webp',
+    codigo: '123459',
+    Nombre:'Cuna Gris',
+    descripcion:'Cuna tamaño compacto color gris',
+    precio: '300.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/17.webp',
+    codigo: '123460',
+    Nombre:'Libro Infantil',
+    descripcion:'Libro infantil "Pequeña Gota de Lluvia"',
+    precio: '10.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/13.webp',
+    codigo: '123461',
+    Nombre:'Libro Infantil',
+    descripcion:'Libro infantil "La Granja"',
+    precio: '10.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/14.webp',
+    codigo: '123462',
+    Nombre:'Libro Infantil',
+    descripcion:'Libro infantil "Te Amo Bebé"',
+    precio: '10.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/16.webp',
+    codigo: '123463',
+    Nombre:'Libro Infantil',
+    descripcion:'Libro infantil "La Orugita"',
+    precio: '20.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/5.webp',
+    codigo: '123464',
+    Nombre:'Baberos',
+    descripcion:'Baberos de animalitos',
+    precio: '4.990',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/5.webp',
+    codigo: '123465',
+    nombre: 'Set Babero-Toalla',
+    descripcion:'Set de Babero y Toalla para bebé de algodón',
+    precio: '8.990',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/19.webp',
+    codigo: '123466',
+    nombre: 'Trajecito bebe',
+    descripcion:'Trajecito de bebe de algodon',
+    precio: '10.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/19.webp',
+    codigo: '123467',
+    nombre: 'Cámara fotográfica de Jueguete',
+    descripcion:'Cámara de juguete fabricada en madera',
+    precio: '12.000',
+    cantidad: '0',
+},
 ];
-
 
 
 eventListener();
@@ -79,7 +150,7 @@ function llenarProductos(productos){
         //parrafo-codigo
         let codigo = document.createElement('p');
         codigo.classList.add('card-text');
-        codigo.textContent = `Codigo: ${producto.codigo}`;
+        codigo.textContent = `Código: ${producto.codigo}`;
         contenedorC.appendChild(codigo);
 
         //parrafo-nombre
