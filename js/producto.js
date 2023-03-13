@@ -79,7 +79,7 @@ let productos = [
     cantidad: '0',
 },
 {
-    img:'/img/productos/5.webp',
+    img:'/img/productos/6.webp',
     codigo: '123465',
     nombre: 'Set Babero-Toalla',
     descripcion:'Set de Babero y Toalla para bebé de algodón',
@@ -95,7 +95,7 @@ let productos = [
     cantidad: '0',
 },
 {
-    img:'/img/productos/19.webp',
+    img:'/img/productos/20.webp',
     codigo: '123467',
     nombre: 'Cámara fotográfica de Jueguete',
     descripcion:'Cámara de juguete fabricada en madera',
