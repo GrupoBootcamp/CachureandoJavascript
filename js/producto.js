@@ -171,7 +171,7 @@ function llenarProductos(productos){
       //parrafo-codigo
       let codigo = document.createElement('p');
       codigo.classList.add('card-text');
-      codigo.textContent = `Codigo: ${producto.codigo}`;
+      codigo.textContent = `Código: ${producto.codigo}`;
       contenedorC.appendChild(codigo);
 
       //parrafo-nombre
