@@ -14,7 +14,6 @@ let productos = [
     descripcion:'Pijama de bebe color gris',
     precio: '15.000',
     cantidad: '0',
-
 },
 {
     img:'/img/productos/10.webp',
@@ -94,6 +93,14 @@ let productos = [
     nombre: 'Trajecito bebe',
     descripcion:'Trajecito de bebe de algodon',
     precio: '10.000',
+    cantidad: '0',
+},
+{
+    img:'/img/productos/20.webp',
+    codigo: '123467',
+    nombre: 'Cámara fotográfica de Jueguete',
+    descripcion:'Cámara de juguete fabricada en madera',
+    precio: '12.000',
     cantidad: '0',
 }
 ];
@@ -216,16 +223,13 @@ function llenarProductos(productos){
       botonM.textContent = '-';
       cardBody.appendChild(botonM);
       contenedorC.appendChild(cardBody);
-      
-
+    
       //Link tipo boton
       let linkInput = document.createElement('a');
       linkInput.classList.add('btn', 'btn-colorLetra');
       linkInput.textContent = 'agregar';
       cardBody.appendChild(linkInput);
       contenedorC.appendChild(cardBody);
-
-
       contenedor.appendChild(contenedorC);
 
     });
