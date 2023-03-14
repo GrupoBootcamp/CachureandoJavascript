@@ -2,9 +2,10 @@
 const valor = document.querySelector('#valor');
 const rango = document.querySelector('.form-range');
 const btn = document.querySelector('.btn');
+const contenedor = document.querySelector('#cards-container');
 
 //Globales
-let cantidads = 0;
+let carro = [];
 
 let productos = [
 {
@@ -82,7 +83,7 @@ let productos = [
 {
     img:'/img/productos/6.webp',
     codigo: '123465',
-    nombre: 'Set Babero-Toalla',
+    Nombre: 'Set Babero-Toalla',
     descripcion:'Set de Babero y Toalla para bebé de algodón',
     precio: '8.990',
     cantidad: '0',
@@ -90,7 +91,7 @@ let productos = [
 {
     img:'/img/productos/19.webp',
     codigo: '123466',
-    nombre: 'Trajecito bebe',
+    Nombre: 'Trajecito bebe',
     descripcion:'Trajecito de bebe de algodon',
     precio: '10.000',
     cantidad: '0',
@@ -98,54 +99,29 @@ let productos = [
 {
     img:'/img/productos/20.webp',
     codigo: '123467',
-    nombre: 'Cámara fotográfica de Jueguete',
+    Nombre: 'Cámara fotográfica de Jueguete',
     descripcion:'Cámara de juguete fabricada en madera',
     precio: '12.000',
     cantidad: '0',
 }
 ];
 
-llenarProductos(productos);
+
 eventListener();
 
 //Eventos
 
 function eventListener(){
 
-   /* document.addEventListener('DOMContentLoaded', ()=>{
+    document.addEventListener('DOMContentLoaded', ()=>{
 
         llenarProductos(productos);
-
-        let container2 = document.querySelectorAll('.card-body');
-        console.log(container2);
-    });*/
-
-    
-    let container2 = document.querySelectorAll('.card-body .plus');
-    let textInput = document.querySelectorAll('.card-body .cantidad');
-    console.log(container2);
-
-    container2.forEach(function(elemento, indice){
-
-         elemento.addEventListener('click', ()=>{
-
-            textInput[indice].value = parseInt(textInput[indice].value) + 1
-
-         });   
+        generarCantidad();
+        carro =JSON.parse(localStorage.getItem('carrito')) || [];
 
     });
 
-    let container3 = document.querySelectorAll('.card-body .minus');
-
-    container3.forEach(function(elemento, indice){
-
-         elemento.addEventListener('click', ()=>{
-
-            textInput[indice].value = parseInt(textInput[indice].value) - 1
-
-         });   
-
-    });
+    contenedor.addEventListener('click', leerDatosElemento);
 
     rango.addEventListener('change', ()=>{
 
@@ -153,11 +129,11 @@ function eventListener(){
 
     });
 
+
+
 }
 
 function llenarProductos(productos){
-
-    let contenedor = document.querySelector('#cards-container') 
 
     productos.forEach(function (producto){
 
@@ -177,9 +153,15 @@ function llenarProductos(productos){
 
       //parrafo-codigo
       let codigo = document.createElement('p');
-      codigo.classList.add('card-text');
-      codigo.textContent = `Código: ${producto.codigo}`;
-      contenedorC.appendChild(codigo);
+      let codigoContainer = document.createElement('div');
+      let codigoLabel = document.createElement('span')
+      codigoContainer.classList.add('d-flex','justify-content-center', 'mb-2');
+      codigoLabel.textContent = 'codigo: ';
+      codigo.classList.add('card-text', 'codigo');
+      codigo.textContent = `${producto.codigo}`;
+      codigoContainer.appendChild(codigoLabel);
+      codigoContainer.appendChild(codigo);
+      contenedorC.appendChild(codigoContainer);
 
       //parrafo-nombre
       let nombre = document.createElement('h5');
@@ -190,16 +172,22 @@ function llenarProductos(productos){
 
       //parrafo-descripcion
       let descripcion = document.createElement('p');
-      descripcion.classList.add('card-text');
+      descripcion.classList.add('card-text', 'description');
       descripcion.textContent = producto.descripcion;
       cardBody.appendChild(descripcion);
       contenedorC.appendChild(cardBody);
 
       //parrafo-precio
       let precio = document.createElement('p');
-      precio.classList.add('card-text');
-      precio.textContent = `Precio: ${producto.precio}`
-      cardBody.appendChild(precio);
+      let precioLabel = document.createElement('span')
+      let precioContainer = document.createElement('div');
+      precioContainer.classList.add('d-flex','justify-content-center', 'mb-2');
+      precioLabel.textContent = 'Precio: ';
+      precio.classList.add('card-text', 'price');
+      precio.textContent = `${producto.precio}`;
+      precioContainer.appendChild(precioLabel);
+      precioContainer.appendChild(precio);
+      cardBody.appendChild(precioContainer);
       contenedorC.appendChild(cardBody);
 
       //boton +
@@ -233,4 +221,115 @@ function llenarProductos(productos){
       contenedor.appendChild(contenedorC);
 
     });
+}
+
+function generarCantidad(){
+
+    let textInput = document.querySelectorAll('.card-body .cantidad');
+    let container2 = document.querySelectorAll('.card-body .plus');
+
+    console.log(container2);
+
+    container2.forEach(function(elemento, indice){
+
+         elemento.addEventListener('click', ()=>{
+
+            textInput[indice].value = parseInt(textInput[indice].value) + 1
+
+         });   
+
+    });
+
+    let container3 = document.querySelectorAll('.card-body .minus');
+
+    container3.forEach(function(elemento, indice){
+
+         elemento.addEventListener('click', ()=>{
+
+            textInput[indice].value = parseInt(textInput[indice].value) - 1
+
+         });   
+
+    });
+
+}
+
+function leerDatosElemento(e){
+
+    if(e.target.classList.contains('btn')){
+       
+        const seleccionado = e.target.parentElement.parentElement;
+        llenarObjCarro(seleccionado);
+
+    }
+
+}
+
+
+function llenarObjCarro(seleccionado){
+
+    //console.log(seleccionado.querySelector('.cantidad').value);
+   //console.log(seleccionado.querySelector('.card-title').textContent);
+
+    if(seleccionado.querySelector('.cantidad').value == 0){
+
+        alert('Debes seleccionar cantidad');
+        return;
+
+    }
+
+    const carrito = {
+
+        img: seleccionado.querySelector('.card-img-top').src,
+        codigo: seleccionado.querySelector('.codigo').textContent,
+        nombre: seleccionado.querySelector('.card-title').textContent,
+        descripcion:seleccionado.querySelector('.description').textContent,
+        precio: seleccionado.querySelector('.price').textContent,
+        cantidad: seleccionado.querySelector('.cantidad').value,
+
+    }
+
+    let enCarrito = carro.some(function(elemento){
+
+        return elemento.codigo === carrito.codigo;
+
+    });
+
+    //actualizar cantidad del elemento
+
+    if(enCarrito){
+
+        let newCarrito = carro.map(function (elemento){
+
+            if(elemento.codigo === carrito.codigo ){
+
+                elemento.cantidad = seleccionado.querySelector('.cantidad').value;
+                return elemento;
+            }else{
+
+                return elemento;
+            }
+
+        });
+
+        console.log('CARRITO');
+        console.log(newCarrito);
+        carro = [...newCarrito];
+
+    }else{
+
+        //console.log('el elemento no existe');
+        carro = [...carro, carrito];
+        console.log('CARRITO');
+        console.log(carro);
+
+    }
+
+    sincronizarStorage();
+}
+
+function sincronizarStorage (){
+
+    localStorage.setItem('carrito', JSON.stringify(carro));
+
 }
