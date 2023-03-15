@@ -3,9 +3,21 @@ const valor = document.querySelector('#valor');
 const rango = document.querySelector('.form-range');
 const btn = document.querySelector('.btn');
 const contenedor = document.querySelector('#cards-container');
+const tablaCarrito = document.querySelector('#carritoTabla');
+const carrito = document.querySelector('#carrito');
+const cNeto = document.querySelector('#neto');
+const cIva = document.querySelector('#iva');
+const cEnvio = document.querySelector('#envio');
+const cTotal = document.querySelector('#Total');
 
 //Globales
 let carro = [];
+let neto;
+let iva;
+let envio;
+let totalIva = 0;
+let totalNeto = 0;
+let total = 0;
 
 let productos = [
 {
@@ -13,7 +25,7 @@ let productos = [
     codigo: '123456',
     Nombre:'Pijamas',
     descripcion:'Pijama de bebe color gris',
-    precio: '15.000',
+    precio: '15000',
     cantidad: '0',
 },
 {
@@ -21,7 +33,7 @@ let productos = [
     codigo: '123457',
     Nombre:'Cuadritos',
     descripcion:'Cuadritos decortativos',
-    precio: '10.000',
+    precio: '10000',
     cantidad: '0',
 },
 {
@@ -29,7 +41,7 @@ let productos = [
     codigo: '123458',
     Nombre:'Figurita de conejo',
     descripcion:'Figura decorativa para habitación de conejo',
-    precio: '10.000',
+    precio: '10000',
     cantidad: '0',
 },
 {
@@ -37,7 +49,7 @@ let productos = [
     codigo: '123459',
     Nombre:'Cuna Gris',
     descripcion:'Cuna tamaño compacto color gris',
-    precio: '300.000',
+    precio: '300000',
     cantidad: '0',
 },
 {
@@ -45,7 +57,7 @@ let productos = [
     codigo: '123460',
     Nombre:'Libro Infantil',
     descripcion:'Libro infantil "Pequeña Gota de Lluvia"',
-    precio: '10.000',
+    precio: '10000',
     cantidad: '0',
 },
 {
@@ -53,7 +65,7 @@ let productos = [
     codigo: '123461',
     Nombre:'Libro Infantil',
     descripcion:'Libro infantil "La Granja"',
-    precio: '10.000',
+    precio: '10000',
     cantidad: '0',
 },
 {
@@ -61,7 +73,7 @@ let productos = [
     codigo: '123462',
     Nombre:'Libro Infantil',
     descripcion:'Libro infantil "Te Amo Bebé"',
-    precio: '10.000',
+    precio: '10000',
     cantidad: '0',
 },
 {
@@ -69,7 +81,7 @@ let productos = [
     codigo: '123463',
     Nombre:'Libro Infantil',
     descripcion:'Libro infantil "La Orugita"',
-    precio: '20.000',
+    precio: '20000',
     cantidad: '0',
 },
 {
@@ -77,7 +89,7 @@ let productos = [
     codigo: '123464',
     Nombre:'Baberos',
     descripcion:'Baberos de animalitos',
-    precio: '4.990',
+    precio: '4990',
     cantidad: '0',
 },
 {
@@ -85,7 +97,7 @@ let productos = [
     codigo: '123465',
     Nombre: 'Set Babero-Toalla',
     descripcion:'Set de Babero y Toalla para bebé de algodón',
-    precio: '8.990',
+    precio: '8990',
     cantidad: '0',
 },
 {
@@ -93,7 +105,7 @@ let productos = [
     codigo: '123466',
     Nombre: 'Trajecito bebe',
     descripcion:'Trajecito de bebe de algodon',
-    precio: '10.000',
+    precio: '10000',
     cantidad: '0',
 },
 {
@@ -101,7 +113,7 @@ let productos = [
     codigo: '123467',
     Nombre: 'Cámara fotográfica de Jueguete',
     descripcion:'Cámara de juguete fabricada en madera',
-    precio: '12.000',
+    precio: '12000',
     cantidad: '0',
 }
 ];
@@ -113,15 +125,22 @@ eventListener();
 
 function eventListener(){
 
-    document.addEventListener('DOMContentLoaded', ()=>{
+    contenedor.addEventListener('click', leerDatosElemento);
 
+    carrito.addEventListener('click', borrarElemento);
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+       
         llenarProductos(productos);
         generarCantidad();
         carro =JSON.parse(localStorage.getItem('carrito')) || [];
+        console.log('carrito desde el local')
+        console.log(carro);
+        mostrarCarrito(true);
 
     });
 
-    contenedor.addEventListener('click', leerDatosElemento);
+    //const btnBorrar = document.querySelector('.borrar-curso');
 
     rango.addEventListener('change', ()=>{
 
@@ -257,8 +276,9 @@ function generarCantidad(){
 function leerDatosElemento(e){
 
     if(e.target.classList.contains('btn')){
-       
+        
         const seleccionado = e.target.parentElement.parentElement;
+        //e.target.classList.contains('cantidad').value = 0;
         llenarObjCarro(seleccionado);
 
     }
@@ -282,7 +302,7 @@ function llenarObjCarro(seleccionado){
 
         img: seleccionado.querySelector('.card-img-top').src,
         codigo: seleccionado.querySelector('.codigo').textContent,
-        nombre: seleccionado.querySelector('.card-title').textContent,
+        Nombre: seleccionado.querySelector('.card-title').textContent,
         descripcion:seleccionado.querySelector('.description').textContent,
         precio: seleccionado.querySelector('.price').textContent,
         cantidad: seleccionado.querySelector('.cantidad').value,
@@ -321,15 +341,115 @@ function llenarObjCarro(seleccionado){
         //console.log('el elemento no existe');
         carro = [...carro, carrito];
         console.log('CARRITO');
-        console.log(carro);
 
     }
+    
+    //calcular 
 
-    sincronizarStorage();
+    mostrarCarrito(true);
+    
 }
 
 function sincronizarStorage (){
 
     localStorage.setItem('carrito', JSON.stringify(carro));
 
+}
+
+function mostrarCarrito(){
+
+    limpiarHTML(); 
+    
+    console.log('mostrando carro')
+
+    totalIva = 0;
+    totalNeto = 0;
+    total = 0;
+    envio = 0;
+
+    cNeto.textContent = 0;
+    cIva.textContent = 0;
+    cTotal.textContent = 0;
+    cEnvio.textContent = 0;
+
+    carro.forEach((elemento)=>{
+
+        const row = document.createElement('tr');
+        const {img, Nombre, precio, cantidad, codigo } = elemento;
+
+        //calcular total
+
+
+            neto = parseInt(precio * +cantidad)/1.19;
+            neto = Math.round(neto, 1);
+            iva = (precio *cantidad) - neto;
+            totalIva = totalIva + iva;
+            totalNeto = totalNeto + neto;
+            total = totalNeto + totalIva;
+
+            if(total < 100000){
+
+                envio = total *0.05;
+                total = total + envio;
+
+            }
+
+
+        row.innerHTML = `                            
+      
+        <td><img class="img_carrito" src="${img}"></td>
+        <td scope="col">${Nombre}</td>
+        <td scope="col">${precio}</td>
+        <td scope="col">${cantidad}</td>
+        <td>
+                <a href="#" class="borrar-curso" data-id="${codigo}"> X </a>
+        </td>`;
+        
+        cNeto.textContent = totalNeto;
+        cIva.textContent = totalIva;
+        cTotal.textContent = total;
+        cEnvio.textContent = envio;
+        tablaCarrito.appendChild(row);
+        
+    });
+
+
+
+    sincronizarStorage();
+
+
+
+}
+
+function borrarElemento(e){
+
+    let codigoBorar;
+
+    if(e.target.classList.contains('borrar-curso')){
+
+        const codigoId = e.target.getAttribute('data-id');
+        e.preventDefault();
+
+        codigoBorar = codigoId;
+        carro = carro.filter((elemento)=>{
+
+            return elemento.codigo !== codigoId;
+
+        });
+        
+    }
+
+    mostrarCarrito();
+
+}
+
+function limpiarHTML (){
+    //forma lenta baja performance
+    //contenedorCarrito.innerHTML = '';
+
+    while(tablaCarrito.firstChild){
+
+        tablaCarrito.removeChild(tablaCarrito.firstChild);
+
+    }
 }

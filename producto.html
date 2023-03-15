@@ -29,7 +29,7 @@
                   <img src="/img/carrito.svg" alt="">
                 </a>
               
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="carrito">
                     <table class="table">
                         <thead>
                             <tr>
@@ -40,26 +40,17 @@
                               <th scope="col" >borrar</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Jacob</td>
-                              <td>Thornton</td>
-                              <td>@fat</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td colspan="2">Larry the Bird</td>
-                              <td>@twitter</td>
-                            </tr>
+                          <tbody id="carritoTabla">
+
                           </tbody>
                     </table>
+                    <div>
+                        <div class="d-flex"><p>Neto :</p><span id="neto" class="ms-1"></span></div>
+                        <div class="d-flex"><p>Iva  :</p><span id="iva" class="ms-1"></span></div>
+                        <div class="d-flex"><p>Envio:</p><span id="envio" class="ms-1"></span></div>
+                        <div class="d-flex"><p>Total:</p><span id="Total" class="ms-1"></span></div>
+                    </div>
+                    <button class="nav__buttonSearch">Pagar</button>
                 </ul>
               </div>
         </nav>
