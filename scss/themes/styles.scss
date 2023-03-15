@@ -7,7 +7,7 @@
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 // colores custom del proyecto
-$custom-colors: (
+$custom-colors: ( 
     "colorFondo":       $colorFondo,
     "colorFondoHover":  $colorFondoHover,
     "colorLetra":       $colorLetra,

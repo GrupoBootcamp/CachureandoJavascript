@@ -50,7 +50,8 @@
                         <div class="d-flex"><p>Envio:</p><span id="envio" class="ms-1"></span></div>
                         <div class="d-flex"><p>Total:</p><span id="Total" class="ms-1"></span></div>
                     </div>
-                    <button class="nav__buttonSearch">Pagar</button>
+                    <button type="button" class="btn btn-colorLetra" data-bs-toggle="modal" data-bs-target="#exampleModal" >Pagar</button>
+                    <!-- <button class="nav__buttonSearch">Pagar</button> -->
                 </ul>
               </div>
         </nav>
@@ -151,99 +152,58 @@
         <!-- Contenedor CARDs de productos  -->
         <div class="col-10 mx-0">
             <div class="row mx-0 text-center" id="cards-container">
-                <!--<div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/11x.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Figurita de conejo</h5>
-                    <p class="card-text"> Figura decorativa para habitacion de conejo</p>
-                    <p class="card-text"> Precio: 10.000</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/12.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Cuna Gris</h5>
-                    <p class="card-text">Cuna tamaño compacto color gris</p>
-                    <p class="card-text">Precio: 300.000 </p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/17.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Libro Infantil</h5>
-                    <p class="card-text">Libro Pequeña gota de lluvia</p>
-                    <p class="card-text">Precio: 10.000</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/13.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Libro Infantil</h5>
-                    <p class="card-text">Libro infantil la Granja.</p>
-                    <p class="card-text">Precio: 12.000</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/14.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Libro Infantil</h5>
-                    <p class="card-text">Libro Infantil Te amo Bebe.</p>
-                    <p class="card-text">Precio: 10.000</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/16.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Libro Infantil</h5>
-                    <p class="card-text">Libro Infantil La oruguita.</p>
-                    <p class="card-text">Precio: 20.000</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/5.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Baberos</h5>
-                    <p class="card-text">Baberos de animalitos.</p>
-                    <p class="card-text">Precio: 4.990.</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/6.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Set Babero-Toalla</h5>
-                    <p class="card-text">Set de Babero y Toalla para bebe de algodon.</p>
-                    <p class="card-text">Precio: 8.990.</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/19.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Trajecito bebe</h5>
-                    <p class="card-text">Trajecito de bebe de algodon.</p>
-                    <p class="card-text">Precio: 15.000.</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-lg-3">
-                    <img src="/img/productos/20.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Camara fotografica Juegueta</h5>
-                    <p class="card-text">Camara de Juguete fabricada en madera.</p>
-                    <p class="card-text">Precio: 12.000</p>
-                    <a href="#" class="btn btn-colorLetra">Agregar</a>
-                    </div>
-                </div> -->
             </div>
         </div>
+        <!-- fin contenedor CARDs de producto -->
+
     </div>
+    
+     <!-- Bloque Modal Bootstrap -->
+    
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-colorFondo">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de Despacho</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-colorPuente">
+                <form>
+                    <div class="mb-3">
+                      <label for="inputDireccion" class="form-label">Dirección</label>
+                      <input type="text" class="form-control" id="inputDireccion">
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputComuna" class="form-label">Comuna</label>
+                      <input type="text" class="form-control" id="inputComuna">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputRegion" class="form-label">Región</label>
+                        <input type="text" class="form-control" id="inputRegion">
+                      </div>
+                      <div class="mb-3">
+                        <label for="inputNombre" class="form-label">Nombre de quién recibe</label>
+                        <input type="text" class="form-control" id="inputNombre">
+                      </div>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Email del comprador</label>
+                        <input type="email" class="form-control" id="inputEmail">
+                      </div>
+                    <!-- <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div> -->
+            </div>
+            <div class="modal-footer bg-colorFondo">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Fin Bloque Modal Bootstrap -->
+
     <div class="container-fluid">
         <footer>
              <div class="bg-puente">
