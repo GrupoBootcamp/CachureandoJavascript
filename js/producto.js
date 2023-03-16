@@ -118,6 +118,36 @@ let productos = [
 }
 ];
 
+//correo
+
+
+
+/*const direccionInput = document.querySelector('#inputDireccion');
+const comunaInput = document.querySelector('#inputComuna');
+const regionInput = document.querySelector('#inputRegion');
+const nombreInput = document.querySelector('#inputNombre');*/
+
+
+const btnInput = document.getElementById('btnInput');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btnInput.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_9naw98v';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btnInput.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btnInput.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
 
 eventListener();
 

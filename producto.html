@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/main.css">
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <title>Cachureando Productos</title>
 </head>
 <body>
@@ -162,48 +162,46 @@
     
      <!-- Bloque Modal Bootstrap -->
     
-     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-colorFondo">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de Despacho</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header bg-colorFondo">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de Despacho</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-colorPuente">
+                    <form id="form">
+                        <div class="mb-3">
+                        <label for="inputDireccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="inputDireccion">
+                        </div>
+                        <div class="mb-3">
+                        <label for="inputComuna" class="form-label">Comuna</label>
+                        <input type="text" class="form-control" id="inputComuna">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputRegion" class="form-label">Región</label>
+                            <input type="text" class="form-control" id="inputRegion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre de quién recibe</label>
+                            <input type="text" class="form-control" id="inputNombre" name="inputNombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email del comprador</label>
+                            <input type="email" class="form-control" id="inputEmail" name="inputEmail">
+                        </div>
+                        <div class="modal-footer bg-colorFondo">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                            <button type="submit" class="btn btn-primary" id="btnInput" name="btnInput">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="modal-body bg-colorPuente">
-                <form>
-                    <div class="mb-3">
-                      <label for="inputDireccion" class="form-label">Dirección</label>
-                      <input type="text" class="form-control" id="inputDireccion">
-                    </div>
-                    <div class="mb-3">
-                      <label for="inputComuna" class="form-label">Comuna</label>
-                      <input type="text" class="form-control" id="inputComuna">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputRegion" class="form-label">Región</label>
-                        <input type="text" class="form-control" id="inputRegion">
-                      </div>
-                      <div class="mb-3">
-                        <label for="inputNombre" class="form-label">Nombre de quién recibe</label>
-                        <input type="text" class="form-control" id="inputNombre">
-                      </div>
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email del comprador</label>
-                        <input type="email" class="form-control" id="inputEmail">
-                      </div>
-                    <!-- <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> -->
-            </div>
-            <div class="modal-footer bg-colorFondo">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Guardar Cambios</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
         </div>
     </div>
+
     <!-- Fin Bloque Modal Bootstrap -->
 
     <div class="container-fluid">
@@ -236,6 +234,12 @@
              </div>
         </footer>
    </div>      
+
+   <script type="text/javascript"
+   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    emailjs.init('h8PLM0X72Dw8PM6aT')
+    </script>
     <script src="./js/fecha_hora.js"></script>
     <script src="https://kit.fontawesome.com/9d55460b02.js" crossorigin="anonymous"></script>
     <script src="/js/app.js"></script>
