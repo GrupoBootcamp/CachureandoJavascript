@@ -453,3 +453,36 @@ function limpiarHTML (){
 
     }
 }
+
+//Validación de formulario
+let btnEnviar = document.querySelector("#inputEnviar");
+
+btnEnviar.addEventListener("click",(e)=> {
+    e.preventDefault();
+
+    let direccion = document.querySelector("#inputDireccion").value;
+    let comuna = document.querySelector("#inputComuna").value;
+    let region = document.querySelector("#inputRegion").value;
+    let nombre = document.querySelector("#inputNombre").value;
+    let email = document.querySelector("#inputEmail").value;
+    let mensaje = document.querySelector("#mensaje");
+    mensaje.innerHTML ="";
+
+
+    if(direccion ===""){
+        mensaje.innerHTML ="<p>Debe escribir una dirección</p>";
+   
+    }else if(comuna === ""){
+        mensaje.innerHTML = "<p>Debe escribir una comuna</p>";
+       
+    }else if(region === ""){
+        mensaje.innerHTML = "<p>Debe escribir una región</p>";
+      
+    }else if(nombre === ""){
+        mensaje.innerHTML = "<p>Debe escribir el nombre</p>";
+    
+    }else if(email === ""){
+        mensaje.innerHTML = "<p>Debe escribir un email</p>";
+        
+    }
+})

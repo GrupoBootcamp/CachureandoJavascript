@@ -160,48 +160,44 @@
 
     </div>
     
-     <!-- Bloque Modal Bootstrap -->
-    
-     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Bloque Modal Bootstrap -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-colorFondo">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de Despacho</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header bg-colorFondo">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de Despacho</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-colorPuente">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputDireccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="inputDireccion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputComuna" class="form-label">Comuna</label>
+                            <input type="text" class="form-control" id="inputComuna">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputRegion" class="form-label">Región</label>
+                            <input type="text" class="form-control" id="inputRegion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre de quién recibe</label>
+                            <input type="text" class="form-control" id="inputNombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email del comprador</label>
+                            <input type="email" class="form-control" id="inputEmail">
+                        </div>
+                        <div class="modal-footer bg-colorFondo">
+                            <div id="mensaje"></div>
+                            <button type="button" class="btn btn-colorLetra" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-colorLetra" id="inputEnviar">Enviar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="modal-body bg-colorPuente">
-                <form>
-                    <div class="mb-3">
-                      <label for="inputDireccion" class="form-label">Dirección</label>
-                      <input type="text" class="form-control" id="inputDireccion">
-                    </div>
-                    <div class="mb-3">
-                      <label for="inputComuna" class="form-label">Comuna</label>
-                      <input type="text" class="form-control" id="inputComuna">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputRegion" class="form-label">Región</label>
-                        <input type="text" class="form-control" id="inputRegion">
-                      </div>
-                      <div class="mb-3">
-                        <label for="inputNombre" class="form-label">Nombre de quién recibe</label>
-                        <input type="text" class="form-control" id="inputNombre">
-                      </div>
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email del comprador</label>
-                        <input type="email" class="form-control" id="inputEmail">
-                      </div>
-                    <!-- <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> -->
-            </div>
-            <div class="modal-footer bg-colorFondo">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Guardar Cambios</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
         </div>
     </div>
     <!-- Fin Bloque Modal Bootstrap -->
