@@ -36,3 +36,33 @@
     width: 60px;
 
 }
+
+.lista__item{
+
+    width: 5rem;
+
+}
+
+.lista{
+
+    padding: 0;
+
+}
+
+.lista__container{
+
+    text-align: center;
+    list-style-type: none ;
+    border-top: solid 0.2rem $colorLetra;
+    border-right: solid 0.2rem $colorLetra;
+    border-left: solid 0.2rem $colorLetra;
+
+    &--final{
+
+        list-style-type: none;
+        border-bottom: solid 0.2rem $colorLetra;
+        border-right: solid 0.2rem $colorLetra;
+        border-left: solid 0.2rem $colorLetra;
+
+    }
+}
