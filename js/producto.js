@@ -141,12 +141,13 @@ document.getElementById('form')
 
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
-      btnInput.value = 'Send Email';
+        btnInput.value = 'Send Email';
       alert('Sent!');
     }, (err) => {
-      btnInput.value = 'Send Email';
+        btnInput.value = 'Send Email';
       alert(JSON.stringify(err));
     });
+
 });
 
 eventListener();
