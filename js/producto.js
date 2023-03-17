@@ -10,6 +10,13 @@ const cIva = document.querySelector('#iva');
 const cEnvio = document.querySelector('#envio');
 const cTotal = document.querySelector('#Total');
 
+const cNombre = document.querySelector('#inputNombre').value
+const cEmail = document.querySelector('#inputEmail').value
+const cDireccion = document.querySelector('#inputDireccion')
+const cComuna = document.querySelector('#inputComuna')
+const cRegion = document.querySelector('#inputRegion')
+
+
 //Globales
 let carro = [];
 let neto;
@@ -27,6 +34,7 @@ let productos = [
     descripcion:'Pijama de bebe color gris',
     precio: '15000',
     cantidad: '0',
+
 },
 {
     img:'/img/productos/10.webp',
@@ -35,6 +43,8 @@ let productos = [
     descripcion:'Cuadritos decortativos',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Enmarcate',
+    Tipo: 'Decoración',
 },
 {
     img:'/img/productos/11x.webp',
@@ -43,6 +53,8 @@ let productos = [
     descripcion:'Figura decorativa para habitación de conejo',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Enmarcate',
+    Tipo: 'Decoración'    
 },
 {
     img:'/img/productos/12.webp',
@@ -51,6 +63,8 @@ let productos = [
     descripcion:'Cuna tamaño compacto color gris',
     precio: '300000',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Muebles',
 },
 {
     img:'/img/productos/17.webp',
@@ -59,6 +73,8 @@ let productos = [
     descripcion:'Libro infantil "Pequeña Gota de Lluvia"',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',    
 },
 {
     img:'/img/productos/13.webp',
@@ -67,6 +83,8 @@ let productos = [
     descripcion:'Libro infantil "La Granja"',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',      
 },
 {
     img:'/img/productos/14.webp',
@@ -75,6 +93,8 @@ let productos = [
     descripcion:'Libro infantil "Te Amo Bebé"',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',    
 },
 {
     img:'/img/productos/16.webp',
@@ -83,6 +103,8 @@ let productos = [
     descripcion:'Libro infantil "La Orugita"',
     precio: '20000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',   
 },
 {
     img:'/img/productos/5.webp',
@@ -91,6 +113,8 @@ let productos = [
     descripcion:'Baberos de animalitos',
     precio: '4990',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Ropa Bebé',        
 },
 {
     img:'/img/productos/6.webp',
@@ -99,6 +123,8 @@ let productos = [
     descripcion:'Set de Babero y Toalla para bebé de algodón',
     precio: '8990',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Ropa Bebé',       
 },
 {
     img:'/img/productos/19.webp',
@@ -115,6 +141,8 @@ let productos = [
     descripcion:'Cámara de juguete fabricada en madera',
     precio: '12000',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Ropa Bebé',      
 }
 ];
 
@@ -129,6 +157,59 @@ const nombreInput = document.querySelector('#inputNombre');*/
 
 
 const btnInput = document.getElementById('btnInput');
+//Emision de Boleta
+let cMensaje = "R.U.T 96.330.226-2\n" 
+cMensaje = cMensaje + "BOLETA ELECTRONICA \n" 
+cMensaje = cMensaje + "N° 156330 \n"
+cMensaje = cMensaje + "S.I.I VALPARAISO \n"
+cMensaje = cMensaje + "CACHUREANDO S.A. \n\n"
+
+cMensaje = cMensaje + "Casa matriz: Arlegui 330 Viña del Mar\n"
+cMensaje = cMensaje + "Teléfonos: +56 32 28854211 / +56 32 28854330\n"
+cMensaje = cMensaje + "Email: cotizaciones@cachureando.cl\n"
+cMensaje = cMensaje + "www.cachureando.cl\n\n"
+cMensaje = cMensaje + "Medio de Pago: TARJETA DE CREDITO\n"
+
+cMensaje = cMensaje +"Vendedor: Miguel Rondanelli Nuñez\n"
+let cFecha
+let cHora
+sacaFechaHora()
+cMensaje = cMensaje +"Emisión: "+cFecha +' '+cHora+'\n'
+cMensaje = cMensaje +"__________________________________________\n"
+
+cMensaje = cMensaje +"Código   Detalle                 Cantidad Precio Total  \n"
+//const str1 = "Código Detalle "
+//cMensaje = cMensaje + addSpace(str1)+'\n'
+cMensaje = cMensaje +"__________________________________________\n"
+//Recorro el archivo carro de compra
+enCarrito.forEach((elemento)=>{
+   
+    const {img, Nombre, precio, cantidad, codigo } = elemento;
+    const cTotal = parseInt(precio * cantidad);
+    //calcular total
+    cMensaje = cMensaje +codigo+' '+Nombre+' '+cantidad+' '+precio + cTotal+'\n';
+});
+//Termina el carro de compra
+const dNeto = document.querySelector('#neto');
+const dIva = document.querySelector('#iva');
+const dEnvio = document.querySelector('#envio');
+const dTotal = document.querySelector('#Total');
+
+cMensaje = cMensaje + 'Neto  : '+dNeto.value+'\n'
+cMensaje = cMensaje + 'IVA   : '+dIva.value+'\n'
+cMensaje = cMensaje + 'Envío : '+dEnvio.value+'\n'
+cMensaje = cMensaje + 'Total : '+dTotal.value+'\n'
+cMensaje = cMensaje +"__________________________________________\n"
+cMensaje = cMensaje + cNombre.value+'\n'
+cMensaje = cMensaje + cDireccion.value+'\n'
+cMensaje = cMensaje + cComuna.value+'\n'
+cMensaje = cMensaje + cRegion.value+'\n'
+cMensaje = cMensaje + cEmail.value+'\n'
+// fin boleta electronica
+
+
+
+
 
 document.getElementById('form')
  .addEventListener('submit', function(event) {
@@ -139,18 +220,47 @@ document.getElementById('form')
    const serviceID = 'default_service';
    const templateID = 'template_9naw98v';
 
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-        btnInput.value = 'Send Email';
-      alert('Sent!');
-    }, (err) => {
-        btnInput.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
+   emailjs.send("service_tje7t6l","template_9naw98v",{
+    inputNombre: cNombre,
+    message: cMensaje,
+    inputEmail: cEmail,
+    })
 
+   
+     .then(() => {
+        btnInput.value = 'Send Email';
+        alert('Sent!');
+      }, (err) => {
+        btnInput.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+
+// document.getElementById('form')
+//  .addEventListener('submit', function(event) {
+//    event.preventDefault();
+
+//    btnInput.value = 'Sending...';
+
+//    const serviceID = 'default_service';
+//    const templateID = 'template_9naw98v';
+
+//    emailjs.sendForm(serviceID, templateID, this)
+    // .then(() => {
+    //   btnInput.value = 'Send Email';
+    //   alert('Sent!');
+    // }, (err) => {
+    //   btnInput.value = 'Send Email';
+    //   alert(JSON.stringify(err));
+    // });
 });
 
 eventListener();
+
+function addSpace(str) {
+    return str.split('').join(' ')
+  }
+
+  
 
 //Eventos
 
@@ -483,4 +593,54 @@ function limpiarHTML (){
         tablaCarrito.removeChild(tablaCarrito.firstChild);
 
     }
+}
+
+function sacaFechaHora(){
+    today=new Date();
+    dd=today.getDate();
+    mmm=today.getMonth();
+    aa=today.getFullYear();
+    switch (mmm) {
+     case 0:
+         mm='Enero';
+         break;
+     case 1:
+         mm='Febrero';
+         break;
+     case 2:
+         mm='Marzo';
+         break;
+     case 3:
+         mm='Abril';
+         break;
+     case 4:
+         mm='Mayo';
+         break;
+     case 5:
+         mm='Junio';
+         break;
+     case 6:
+         mm='Julio';
+         break;
+     case 7:
+         mm='Agosto';
+         break;        
+     case 8:
+         mm='Septiembre';
+         break;
+     case 9:
+         mm='Octubre';
+         break;
+     case 10:
+         mm='Noviembre';
+         break;    
+ 
+     default:
+         mm='Diciembre'      
+     }
+     cFecha = dd+" de "+mm+' del '+aa;
+     h=today.getHours();
+     m=today.getMinutes();
+     s=today.getSeconds();
+     cHora = h+":"+m+":"+s;
 }
