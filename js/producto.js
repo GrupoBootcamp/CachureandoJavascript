@@ -9,15 +9,15 @@ const cNeto = document.querySelector('#neto');
 const cIva = document.querySelector('#iva');
 const cEnvio = document.querySelector('#envio');
 const cTotal = document.querySelector('#Total');
-
-const cNombre = document.querySelector('#inputNombre').value
-const cEmail = document.querySelector('#inputEmail').value
+const cEmail = document.querySelector('#inputEmail');
+const cNombre = document.querySelector('#inputNombre')
 const cDireccion = document.querySelector('#inputDireccion')
 const cComuna = document.querySelector('#inputComuna')
 const cRegion = document.querySelector('#inputRegion')
 
 
 //Globales
+let mensaje;
 let carro = [];
 let neto;
 let iva;
@@ -148,119 +148,12 @@ let productos = [
 
 //correo
 
-
-
 /*const direccionInput = document.querySelector('#inputDireccion');
 const comunaInput = document.querySelector('#inputComuna');
 const regionInput = document.querySelector('#inputRegion');
 const nombreInput = document.querySelector('#inputNombre');*/
 
-
-const btnInput = document.getElementById('btnInput');
-//Emision de Boleta
-let cMensaje = "R.U.T 96.330.226-2\n" 
-cMensaje = cMensaje + "BOLETA ELECTRONICA \n" 
-cMensaje = cMensaje + "N° 156330 \n"
-cMensaje = cMensaje + "S.I.I VALPARAISO \n"
-cMensaje = cMensaje + "CACHUREANDO S.A. \n\n"
-
-cMensaje = cMensaje + "Casa matriz: Arlegui 330 Viña del Mar\n"
-cMensaje = cMensaje + "Teléfonos: +56 32 28854211 / +56 32 28854330\n"
-cMensaje = cMensaje + "Email: cotizaciones@cachureando.cl\n"
-cMensaje = cMensaje + "www.cachureando.cl\n\n"
-cMensaje = cMensaje + "Medio de Pago: TARJETA DE CREDITO\n"
-
-cMensaje = cMensaje +"Vendedor: Miguel Rondanelli Nuñez\n"
-let cFecha
-let cHora
-sacaFechaHora()
-cMensaje = cMensaje +"Emisión: "+cFecha +' '+cHora+'\n'
-cMensaje = cMensaje +"__________________________________________\n"
-
-cMensaje = cMensaje +"Código   Detalle                 Cantidad Precio Total  \n"
-//const str1 = "Código Detalle "
-//cMensaje = cMensaje + addSpace(str1)+'\n'
-cMensaje = cMensaje +"__________________________________________\n"
-//Recorro el archivo carro de compra
-enCarrito.forEach((elemento)=>{
-   
-    const {img, Nombre, precio, cantidad, codigo } = elemento;
-    const cTotal = parseInt(precio * cantidad);
-    //calcular total
-    cMensaje = cMensaje +codigo+' '+Nombre+' '+cantidad+' '+precio + cTotal+'\n';
-});
-//Termina el carro de compra
-const dNeto = document.querySelector('#neto');
-const dIva = document.querySelector('#iva');
-const dEnvio = document.querySelector('#envio');
-const dTotal = document.querySelector('#Total');
-
-cMensaje = cMensaje + 'Neto  : '+dNeto.value+'\n'
-cMensaje = cMensaje + 'IVA   : '+dIva.value+'\n'
-cMensaje = cMensaje + 'Envío : '+dEnvio.value+'\n'
-cMensaje = cMensaje + 'Total : '+dTotal.value+'\n'
-cMensaje = cMensaje +"__________________________________________\n"
-cMensaje = cMensaje + cNombre.value+'\n'
-cMensaje = cMensaje + cDireccion.value+'\n'
-cMensaje = cMensaje + cComuna.value+'\n'
-cMensaje = cMensaje + cRegion.value+'\n'
-cMensaje = cMensaje + cEmail.value+'\n'
-// fin boleta electronica
-
-
-
-
-
-document.getElementById('form')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
-
-   btnInput.value = 'Sending...';
-
-   const serviceID = 'default_service';
-   const templateID = 'template_9naw98v';
-
-   emailjs.send("service_tje7t6l","template_9naw98v",{
-    inputNombre: cNombre,
-    message: cMensaje,
-    inputEmail: cEmail,
-    })
-
-   
-     .then(() => {
-        btnInput.value = 'Send Email';
-        alert('Sent!');
-      }, (err) => {
-        btnInput.value = 'Send Email';
-        alert(JSON.stringify(err));
-      });
-
-// document.getElementById('form')
-//  .addEventListener('submit', function(event) {
-//    event.preventDefault();
-
-//    btnInput.value = 'Sending...';
-
-//    const serviceID = 'default_service';
-//    const templateID = 'template_9naw98v';
-
-//    emailjs.sendForm(serviceID, templateID, this)
-    // .then(() => {
-    //   btnInput.value = 'Send Email';
-    //   alert('Sent!');
-    // }, (err) => {
-    //   btnInput.value = 'Send Email';
-    //   alert(JSON.stringify(err));
-    // });
-});
-
 eventListener();
-
-function addSpace(str) {
-    return str.split('').join(' ')
-  }
-
-  
 
 //Eventos
 
@@ -278,6 +171,7 @@ function eventListener(){
         console.log('carrito desde el local')
         console.log(carro);
         mostrarCarrito(true);
+        mandarBoleta();
 
     });
 
@@ -288,7 +182,6 @@ function eventListener(){
         valor.value = rango.value;
 
     });
-
 
 
 }
@@ -594,6 +487,99 @@ function limpiarHTML (){
 
     }
 }
+
+
+function mandarBoleta(){
+
+    const btnInput = document.getElementById('btnInput');
+
+    //Emision de Boleta
+    cMensaje = "R.U.T 96.330.226-2\n" 
+    cMensaje = cMensaje + "BOLETA ELECTRONICA \n" 
+    cMensaje = cMensaje + "N° 156330 \n"
+    cMensaje = cMensaje + "S.I.I VALPARAISO \n"
+    cMensaje = cMensaje + "CACHUREANDO S.A. \n\n"
+
+    cMensaje = cMensaje + "Casa matriz: Arlegui 330 Viña del Mar\n"
+    cMensaje = cMensaje + "Teléfonos: +56 32 28854211 / +56 32 28854330\n"
+    cMensaje = cMensaje + "Email: cotizaciones@cachureando.cl\n"
+    cMensaje = cMensaje + "www.cachureando.cl\n\n"
+    cMensaje = cMensaje + "Medio de Pago: TARJETA DE CREDITO\n"
+
+    cMensaje = cMensaje +"Vendedor: Miguel Rondanelli Nuñez\n"
+    let cFecha
+    let cHora
+    sacaFechaHora()
+    cMensaje = cMensaje +"Emisión: "+cFecha +' '+cHora+'\n'
+    cMensaje = cMensaje +"__________________________________________\n"
+
+    cMensaje = cMensaje +"Código   Detalle                 Cantidad Precio Total  \n"
+    //const str1 = "Código Detalle "
+    //cMensaje = cMensaje + addSpace(str1)+'\n'
+    cMensaje = cMensaje +"__________________________________________\n"
+    //Recorro el archivo carro de compra
+
+    console.log('antes del forEach');
+    console.log(carro);
+
+    carro.forEach((elemento)=>{
+        const {Nombre, precio, cantidad, codigo } = elemento;
+        const cTotal = parseInt(precio * cantidad);
+        //calcular total
+        console.log('carro boleta')
+        console.log(elemento);
+        cMensaje = cMensaje +codigo+' '+Nombre+' '+cantidad+' '+precio + cTotal+'\n';
+    });
+    
+
+    //Termina el carro de compra
+    /*const dNeto = document.querySelector('#neto');
+    const dIva = document.querySelector('#iva');
+    const dEnvio = document.querySelector('#envio');
+    const dTotal = document.querySelector('#Total');*/
+
+    cMensaje = cMensaje + 'Neto  : '+totalNeto+'\n'
+    cMensaje = cMensaje + 'IVA   : '+totalIva+'\n'
+    cMensaje = cMensaje + 'Envío : '+envio+'\n'
+    cMensaje = cMensaje + 'Total : '+total+'\n'
+    cMensaje = cMensaje +"__________________________________________\n"
+    cMensaje = cMensaje + 'Nombre   :'+cNombre.value+'\n'
+    cMensaje = cMensaje + 'Dirección:'+cDireccion.value+'\n'
+    cMensaje = cMensaje + 'Comuna   :'+cComuna.value+'\n'
+    cMensaje = cMensaje + 'Región   :'+cRegion.value+'\n'
+    cMensaje = cMensaje + 'Email    :' +cEmail.value+'\n'
+    // fin boleta electronica
+
+    console.log(cMensaje);
+
+    document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btnInput.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_9naw98v';
+
+   emailjs.send("service_tje7t6l","template_9naw98v",{
+    inputNombre: cNombre.value,
+    message: cMensaje,
+    inputEmail: cEmail.value,
+    })
+     .then(() => {
+        btnInput.value = 'Send Email';
+        console.log(cEmail);
+        alert('Correo Enviado, revisa tu bandeja de entrada');
+      }, (err) => {
+        btnInput.value = 'Send Email';
+        console.log(cEmail);
+        alert(JSON.stringify(err));
+      });
+
+});
+
+}
+
 
 function sacaFechaHora(){
     today=new Date();
