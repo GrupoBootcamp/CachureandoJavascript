@@ -34,6 +34,7 @@ let productos = [
     descripcion:'Pijama de bebe color gris',
     precio: '15000',
     cantidad: '0',
+
 },
 {
     img:'/img/productos/10.webp',
@@ -42,6 +43,8 @@ let productos = [
     descripcion:'Cuadritos decortativos',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Enmarcate',
+    Tipo: 'Decoración',
 },
 {
     img:'/img/productos/11x.webp',
@@ -50,6 +53,8 @@ let productos = [
     descripcion:'Figura decorativa para habitación de conejo',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Enmarcate',
+    Tipo: 'Decoración'    
 },
 {
     img:'/img/productos/12.webp',
@@ -58,6 +63,8 @@ let productos = [
     descripcion:'Cuna tamaño compacto color gris',
     precio: '300000',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Muebles',
 },
 {
     img:'/img/productos/17.webp',
@@ -66,6 +73,8 @@ let productos = [
     descripcion:'Libro infantil "Pequeña Gota de Lluvia"',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',    
 },
 {
     img:'/img/productos/13.webp',
@@ -74,6 +83,8 @@ let productos = [
     descripcion:'Libro infantil "La Granja"',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',      
 },
 {
     img:'/img/productos/14.webp',
@@ -82,6 +93,8 @@ let productos = [
     descripcion:'Libro infantil "Te Amo Bebé"',
     precio: '10000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',    
 },
 {
     img:'/img/productos/16.webp',
@@ -90,6 +103,8 @@ let productos = [
     descripcion:'Libro infantil "La Orugita"',
     precio: '20000',
     cantidad: '0',
+    Marca: 'Editorial bebe',
+    Tipo: 'Cuentos infantiles',   
 },
 {
     img:'/img/productos/5.webp',
@@ -98,6 +113,8 @@ let productos = [
     descripcion:'Baberos de animalitos',
     precio: '4990',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Ropa Bebé',        
 },
 {
     img:'/img/productos/6.webp',
@@ -106,6 +123,8 @@ let productos = [
     descripcion:'Set de Babero y Toalla para bebé de algodón',
     precio: '8990',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Ropa Bebé',       
 },
 {
     img:'/img/productos/19.webp',
@@ -122,6 +141,8 @@ let productos = [
     descripcion:'Cámara de juguete fabricada en madera',
     precio: '12000',
     cantidad: '0',
+    Marca: 'Bebesit',
+    Tipo: 'Ropa Bebé',      
 }
 ];
 
